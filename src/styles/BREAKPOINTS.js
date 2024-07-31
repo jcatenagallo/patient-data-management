@@ -1,0 +1,8 @@
+const BREAKPOINTS = {
+  MOBILE: 767,
+  TABLET: 1150,
+  DESKTOP: 1440,
+  DESKTOP_XL: 1900,
+};
+
+module.exports = { BREAKPOINTS };
