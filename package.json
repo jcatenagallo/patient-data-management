@@ -10,6 +10,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.35.0",
+    "axios": "^1.3.4",
     "@babel/plugin-syntax-typescript": "^7.23.3",
     "@emotion/react": "^11.11.3",
     "@heroicons/react": "^2.1.1",
