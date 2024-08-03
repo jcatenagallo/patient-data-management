@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        primary: ['var(--font-inter)'],
         sans: ['var(--font-inter)'],
         mono: ['var(--font-roboto-mono)'],
       },
@@ -19,6 +20,9 @@ module.exports = {
         desktopXl: `${BREAKPOINTS.DESKTOP_XL}px`,
       },
       colors: {
+        darks: {
+          black: '#232323',
+        },
         blues: {
           deepSea: '#04485E',
           morningMist: '#C5DEF3',
@@ -44,7 +48,8 @@ module.exports = {
           sage: '#9ABFB4',
         },
         grays: {
-          light: '#EEEEEE',
+          light: '#E3E3E3',
+          background: '#F8F8F8',
           onyx: '#122526',
           shale: '#596667',
           mistic: '#D0D5DD',
