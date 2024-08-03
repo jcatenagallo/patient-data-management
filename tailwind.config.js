@@ -50,6 +50,7 @@ module.exports = {
         grays: {
           light: '#E3E3E3',
           background: '#F8F8F8',
+          smooth: '#B4B5B6',
           onyx: '#122526',
           shale: '#596667',
           mistic: '#D0D5DD',

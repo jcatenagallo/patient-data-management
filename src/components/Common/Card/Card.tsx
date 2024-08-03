@@ -3,6 +3,7 @@ import tw from 'twin.macro';
 import { PatientRecord } from '@/types/common';
 
 import AccordionDescription from './AccordionDescription';
+import TopInformation from './TopInformation';
 
 const StyledWrapper = tw.div`
 flex
@@ -12,11 +13,6 @@ border
 rounded-2xl
 max-w-2xl
 w-full
-`;
-
-const StyledTopContainer = tw.div`
-flex
-p-6
 `;
 
 const StyledDivider = tw.div`
@@ -30,11 +26,11 @@ type Props = {
 };
 
 const Card = ({ patientData }: Props) => {
-  const { description, name } = patientData;
+  const { description, name, avatar, website, createdAt } = patientData;
 
   return (
     <StyledWrapper>
-      <StyledTopContainer>{name}</StyledTopContainer>
+      <TopInformation avatar={avatar} createdAt={createdAt} name={name} website={website} />
       <StyledDivider />
       <AccordionDescription description={description} />
     </StyledWrapper>
