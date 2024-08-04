@@ -1,5 +1,7 @@
+import { StaticImageData } from 'next/image';
+
 export type PatientRecord = {
-  avatar: string;
+  avatar: string | StaticImageData;
   createdAt: string;
   description: string;
   id: string;

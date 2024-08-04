@@ -19,9 +19,9 @@ my-3
 self-center
 `;
 
-const StyledButton = styled.button<{ rotate: boolean }>`
+const StyledButton = styled.button<{ $rotate?: boolean }>`
   .card-arrowIcon {
-    ${({ rotate }) => rotate && tw`rotate-90`}
+    ${({ $rotate }) => ($rotate ? tw`rotate-90` : tw`rotate-0`)}
     ${tw`
     transition-transform
     `}
@@ -58,7 +58,7 @@ const AccordionDescription = ({ description }: Props) => {
 
   return (
     <StyledWrapper>
-      <StyledButton rotate={isAccordionOpen} onClick={() => setIsAccordionOpen((prev) => !prev)}>
+      <StyledButton $rotate={isAccordionOpen} onClick={() => setIsAccordionOpen((prev) => !prev)}>
         <ChevronRightIcon className="card-arrowIcon h-6 w-6 text-darks-black" />
         <StyledButtonLabel>View Details</StyledButtonLabel>
       </StyledButton>

@@ -42,7 +42,9 @@ export default function Home() {
   return (
     <Layout>
       <StyledWrapper>
-        {data?.map((item) => <Card key={item.id} patientData={item} />)}
+        {data?.map((item) => (
+          <Card key={item.id} createOrEditModalId={createOrEditModalId} patientData={item} />
+        ))}
       </StyledWrapper>
       <StyledAddPatientButton onClick={() => NiceModal.show(createOrEditModalId)}>
         <UserPlusIcon className="h-6 w-6 text-darks-black" />

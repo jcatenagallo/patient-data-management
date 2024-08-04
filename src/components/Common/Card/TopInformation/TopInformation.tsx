@@ -6,6 +6,8 @@ import Link from 'next/link';
 import tw from 'twin.macro';
 import { useMemo } from 'react';
 
+import Avatar from '../../Avatar';
+
 const StyledWrapper = tw.div`
 flex
 flex-col
@@ -97,9 +99,10 @@ type Props = {
   avatar: string;
   website: string;
   createdAt: string;
+  onOpenEditModal: () => void;
 };
 
-const TopInformation = ({ name, avatar, website, createdAt }: Props) => {
+const TopInformation = ({ name, avatar, website, createdAt, onOpenEditModal }: Props) => {
   const formattedDate = useMemo(() => {
     const dateWithoutZ = createdAt.slice(0, -1);
     const date = parseISO(dateWithoutZ);
@@ -112,20 +115,7 @@ const TopInformation = ({ name, avatar, website, createdAt }: Props) => {
   return (
     <StyledWrapper>
       <StyledLeftContainer>
-        {avatar && (
-          <Image
-            alt={`${name}-avatar`}
-            height={48}
-            src={avatar}
-            style={{
-              objectFit: 'cover',
-              borderRadius: '100px',
-              maxWidth: '48px',
-              maxHeight: '48px',
-            }}
-            width={48}
-          />
-        )}
+        {avatar && <Avatar name={name} src={avatar} />}
         <StyledSubContainer>
           <StyledName>{name}</StyledName>
           <Link href={website} rel="noopener noreferrer" target="_blank">
@@ -134,11 +124,10 @@ const TopInformation = ({ name, avatar, website, createdAt }: Props) => {
         </StyledSubContainer>
       </StyledLeftContainer>
       <StyledSubContainer>
-        <StyledEditButton>
+        <StyledEditButton onClick={onOpenEditModal}>
           <PencilIcon className="h-5 w-5 text-darks-black" />
           <StyledEditSpan>Edit</StyledEditSpan>
         </StyledEditButton>
-
         {formattedDate && (
           <StyledDateContainer>
             <CalendarDaysIcon className="h-6 w-6 text-darks-black" />
