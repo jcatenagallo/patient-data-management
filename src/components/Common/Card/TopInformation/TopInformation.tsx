@@ -4,6 +4,7 @@ import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import tw from 'twin.macro';
 import { useMemo } from 'react';
+import { StaticImageData } from 'next/image';
 
 import Avatar from '../../Avatar';
 
@@ -95,7 +96,7 @@ const removeHttpPrefix = (url: string) => {
 
 type Props = {
   name: string;
-  avatar: string;
+  avatar: string | StaticImageData;
   website: string;
   createdAt: string;
   onOpenEditModal: () => void;
