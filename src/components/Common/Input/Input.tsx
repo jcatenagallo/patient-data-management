@@ -1,10 +1,23 @@
 import { useController, useFormContext } from 'react-hook-form';
-import tw from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 import { ChangeEvent, useCallback } from 'react';
 
 import { ControllersProps } from '@/types/rhf';
+import useInputError from '@/hooks/useInputsError';
 
-const StyledInput = tw.input`
+const StyledInputWrapper = tw.div`
+flex
+flex-col
+gap-2
+`;
+
+const StyledErrorMessage = tw.span`
+text-red-500
+text-sm
+`;
+
+const StyledInput = styled.input<{ $error?: boolean }>`
+  ${tw`
 w-full
 bg-transparent
 text-sm
@@ -16,6 +29,8 @@ border-grays-light
 border
 rounded-lg
 p-2
+`}
+  ${(props) => props.$error && tw`border-red-500`}
 `;
 
 type Props = ControllersProps & {
@@ -38,6 +53,7 @@ const Input = ({
 }: Props) => {
   const { control, trigger } = useFormContext();
   const { field } = useController({ name, control, ...controllerProps });
+  const error = useInputError(name);
 
   const handleOnChange = useCallback(
     (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,15 +66,19 @@ const Input = ({
   );
 
   return (
-    <StyledInput
-      {...field}
-      {...props}
-      autoComplete="off"
-      placeholder={placeholder}
-      type={props.type}
-      value={hiddeContent ? '' : field.value}
-      onChange={handleOnChange}
-    />
+    <StyledInputWrapper>
+      <StyledInput
+        {...field}
+        {...props}
+        $error={!!error}
+        autoComplete="off"
+        placeholder={placeholder}
+        type={props.type}
+        value={hiddeContent ? '' : field.value}
+        onChange={handleOnChange}
+      />
+      {error && <StyledErrorMessage>{error}</StyledErrorMessage>}
+    </StyledInputWrapper>
   );
 };
 

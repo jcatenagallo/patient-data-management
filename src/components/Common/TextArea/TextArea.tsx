@@ -3,8 +3,20 @@ import tw, { styled } from 'twin.macro';
 import { ChangeEvent, useCallback } from 'react';
 
 import { ControllersProps } from '@/types/rhf';
+import useInputError from '@/hooks/useInputsError';
 
-const StyledTextArea = styled.textarea`
+const StyledInputWrapper = tw.div`
+flex
+flex-col
+gap-2
+`;
+
+const StyledErrorMessage = tw.span`
+text-red-500
+text-sm
+`;
+
+const StyledTextArea = styled.textarea<{ $error?: boolean }>`
   ${tw`
 w-full
 bg-transparent
@@ -20,6 +32,7 @@ p-2
 h-52
 `}
 
+  ${(props) => props.$error && tw`border-red-500`}
   ::-webkit-scrollbar {
     display: none;
   }
@@ -48,6 +61,7 @@ const TextArea = ({
 }: Props) => {
   const { control, trigger } = useFormContext();
   const { field } = useController({ name, control, ...controllerProps });
+  const error = useInputError(name);
 
   const handleOnChange = useCallback(
     (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -60,14 +74,18 @@ const TextArea = ({
   );
 
   return (
-    <StyledTextArea
-      {...field}
-      {...props}
-      autoComplete="off"
-      placeholder={placeholder}
-      value={hiddeContent ? '' : field.value}
-      onChange={handleOnChange}
-    />
+    <StyledInputWrapper>
+      <StyledTextArea
+        {...field}
+        {...props}
+        $error={!!error}
+        autoComplete="off"
+        placeholder={placeholder}
+        value={hiddeContent ? '' : field.value}
+        onChange={handleOnChange}
+      />
+      {error && <StyledErrorMessage>{error}</StyledErrorMessage>}
+    </StyledInputWrapper>
   );
 };
 

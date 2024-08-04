@@ -204,12 +204,12 @@ const CreateOrEditModal = NiceModal.create(({ patientData }: Props) => {
                 </button>
               </StyledHeader>
               <StyledInputContainer>
-                <StyledInputLabel>Name</StyledInputLabel>
+                <StyledInputLabel>Name *</StyledInputLabel>
                 <Input name={`${formBaseName}.name`} placeholder="name" type="text" />
               </StyledInputContainer>
               <StyledFormWrapper />
               <StyledInputContainer>
-                <StyledInputLabel>Website</StyledInputLabel>
+                <StyledInputLabel>Website *</StyledInputLabel>
                 <Input name={`${formBaseName}.website`} placeholder="name" type="text" />
               </StyledInputContainer>
               <StyledFormWrapper />
@@ -235,10 +235,12 @@ const CreateOrEditModal = NiceModal.create(({ patientData }: Props) => {
               </StyledInputContainer>
               <StyledFormWrapper />
               <StyledInputContainer>
-                <StyledInputLabel>Description</StyledInputLabel>
+                <StyledInputLabel>Description *</StyledInputLabel>
                 <TextArea name={`${formBaseName}.description`} placeholder="Description" />
               </StyledInputContainer>
-              <StyledAddPatientButton>{buttonLabel}</StyledAddPatientButton>
+              <StyledAddPatientButton onClick={() => form.trigger()}>
+                {buttonLabel}
+              </StyledAddPatientButton>
               <StyledFormWrapper />
             </StyledWrapper>
           </StyledLayer>
