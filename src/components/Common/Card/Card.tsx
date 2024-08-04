@@ -1,4 +1,5 @@
 import tw from 'twin.macro';
+import NiceModal from '@ebay/nice-modal-react';
 
 import { PatientRecord } from '@/types/common';
 
@@ -24,14 +25,22 @@ h-px
 
 type Props = {
   patientData: PatientRecord;
+  createOrEditModalId: string;
 };
 
-const Card = ({ patientData }: Props) => {
+const Card = ({ patientData, createOrEditModalId }: Props) => {
   const { description, name, avatar, website, createdAt } = patientData;
+  const handleOnOpenEditModal = () => NiceModal.show(createOrEditModalId, { patientData });
 
   return (
     <StyledWrapper>
-      <TopInformation avatar={avatar} createdAt={createdAt} name={name} website={website} />
+      <TopInformation
+        avatar={avatar}
+        createdAt={createdAt}
+        name={name}
+        website={website}
+        onOpenEditModal={handleOnOpenEditModal}
+      />
       <StyledDivider />
       <AccordionDescription description={description} />
     </StyledWrapper>
