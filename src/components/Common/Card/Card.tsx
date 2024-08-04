@@ -11,8 +11,9 @@ flex-col
 border-grays-light
 border
 rounded-2xl
-max-w-2xl
+tablet:max-w-[500px]
 w-full
+h-fit
 `;
 
 const StyledDivider = tw.div`
