@@ -11,9 +11,9 @@ flex-col
 gap-3
 p-6
 
-desktop:flex-row
-desktop:justify-between
-desktop:items-center
+tablet:flex-row
+tablet:justify-between
+tablet:items-center
 `;
 
 const StyledLeftContainer = tw.div`
@@ -30,18 +30,19 @@ gap-y-0.5
 
 const StyledName = tw.h3`
 font-bold
-text-xl
+text-lg
 text-darks-black
 leading-6
+tablet:text-xl
 `;
 
 const StyledWebsite = tw.span`
 font-normal
-text-base
+text-sm
 text-grays-smooth
 leading-5
-
 hover:underline
+tablet:text-base
 `;
 
 const StyledRightContainer = tw.div`
@@ -52,10 +53,23 @@ gap-2
 
 const StyledDate = tw.span`
 font-normal
-text-base
+text-sm
 leading-5
 text-darks-black
+
+tablet:text-base
 `;
+
+const removeHttpPrefix = (url: string) => {
+  if (url.startsWith('http://')) {
+    return url.slice(7);
+  }
+  if (url.startsWith('https://')) {
+    return url.slice(8);
+  }
+
+  return url;
+};
 
 type Props = {
   name: string;
@@ -94,14 +108,14 @@ const TopInformation = ({ name, avatar, website, createdAt }: Props) => {
         <StyledSubLeftContainer>
           <StyledName>{name}</StyledName>
           <Link href={website} rel="noopener noreferrer" target="_blank">
-            <StyledWebsite>{website}</StyledWebsite>
+            <StyledWebsite>{removeHttpPrefix(website)}</StyledWebsite>
           </Link>
         </StyledSubLeftContainer>
       </StyledLeftContainer>
       {formattedDate && (
         <StyledRightContainer>
           <CalendarDaysIcon className="h-6 w-6 text-darks-black" />
-          <StyledDate>{`Created at: ${formattedDate}`}</StyledDate>
+          <StyledDate>{formattedDate}</StyledDate>
         </StyledRightContainer>
       )}
     </StyledWrapper>
