@@ -4,6 +4,7 @@ import Head from 'next/head';
 import '@/styles/globals.css';
 import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import NiceModal from '@ebay/nice-modal-react';
 
 import GlobalStyles from '@/styles/globalStyles';
 
@@ -27,7 +28,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
         </Head>
-        <Component {...pageProps} />
+        <NiceModal.Provider>
+          <Component {...pageProps} />
+        </NiceModal.Provider>
       </GlobalStyles>
     </QueryClientProvider>
   );
