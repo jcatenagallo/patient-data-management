@@ -46,7 +46,7 @@ const Input = ({
 
       if (validateFields) trigger(validateFields);
     },
-    [field, onChange, trigger, validateFields]
+    [field, onChange, trigger, validateFields],
   );
 
   return (

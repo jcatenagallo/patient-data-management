@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import { format, isValid, parseISO } from 'date-fns';
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
