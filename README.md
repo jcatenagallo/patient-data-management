@@ -1,6 +1,6 @@
 # Patient Data Management Application
 
-Welcome to the Patient Data Management application repository. This project is a Next.js application that uses Axios for HTTP requests, React Query for data management, Tailwind CSS with Twin Macro for styling, and Framer Motion for animations. It is deployed on Vercel and can be accessed [here](https://patient-data-management-six.vercel.app/).
+Welcome to the Patient Data Management application repository. This project is a Next.js application that uses Axios for HTTP requests, React Query for data management, Tailwind CSS with Twin Macro for styling, and Framer Motion for animations. It is deployed on Vercel and here is the domain: https://patient-data-management-six.vercel.app/ 
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ Welcome to the Patient Data Management application repository. This project is a
 
 ## About the Project
 
-This project is a robust, user-friendly patient data management system, designed to streamline the process of managing patient data. It is built using modern development tools and libraries, ensuring an efficient, responsive, and smooth user experience. 
+This project is a simple, user-friendly patient data management system, designed to streamline the process of managing patient data. It is built using modern development tools and libraries, ensuring an efficient, responsive, and smooth user experience. 
 
 ## Built With
 
@@ -55,5 +55,11 @@ Now, the application should be running on [localhost:3000](http://localhost:3000
 
 ## Usage
 
-Once the application is running locally, you can use it to manage patient data. The user-friendly interface allows you to easily view all patients, add new ones or update existing data.
+Once the application is running locally, you can use it to manage patient data. You would see an edit button in each card to edit patient data and a create new patient button in the bottom right of the application to create a new one.
 
+## Posible improvements
+
+- Pagination: I Would like to add pagination to not ask for a hundred of patients data at one, and instead add more when the user scroll.
+- Filters: A system of filters will be easy to implement with this typescript structure and it will be usefull to search for patients.
+- Masonry: I thinkg a masonry layout could improve the UI, to not generate those blank spaces when a user open a description.
+- More animations: I would like to add more animation to this app.
