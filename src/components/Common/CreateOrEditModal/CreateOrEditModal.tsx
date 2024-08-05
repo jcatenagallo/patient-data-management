@@ -1,4 +1,5 @@
 import NiceModal, { useModal } from '@ebay/nice-modal-react';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { PhotoIcon } from '@heroicons/react/24/outline';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import { XMarkIcon } from '@heroicons/react/24/outline';
@@ -7,6 +8,7 @@ import tw, { styled } from 'twin.macro';
 import { useId, useMemo, useRef } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
 import { useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 import useNiceModal from '@/hooks/useNiceModal';
 import useHandleClickOutside from '@/hooks/useHandleClickOutside';
@@ -54,12 +56,6 @@ tablet:relative
 tablet:w-full
 tablet:max-w-lg
 tablet:rounded-2xl
-// tablet:bottom-auto
-// tablet:right-auto
-// tablet:top-1/2
-// tablet:left-1/2
-// tablet:-translate-x-1/2
-// tablet:-translate-y-1/2
 `;
 
 const StyledHeader = tw.header`
@@ -209,6 +205,14 @@ const CreateOrEditModal = NiceModal.create(({ patientData }: Props) => {
 
     queryClient.setQueryData(queriesCache.queryKey, newPatientsData);
     handleOnClose();
+    toast.success('Patient created successfully', {
+      style: {
+        backgroundColor: 'rgba(42, 51, 60, 0.80)',
+        color: '#fff',
+      },
+
+      icon: <CheckCircleIcon className="h-6 w-6 text-white" />,
+    });
   };
 
   const handleCreatePatient = () => {
