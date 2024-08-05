@@ -32,9 +32,12 @@ right-0
 bg-[rgba(136,136,136,0.4)]
 backdrop-blur-[8px]
 z-20
+flex
+justify-center
+items-center
 `;
 
-const StyledWrapper = tw.div`
+const StyledWrapper = tw(motion.div)`
 absolute
 top-0
 left-0
@@ -47,15 +50,16 @@ p-6
 bg-white
 overflow-y-auto
 
+tablet:relative
 tablet:w-full
 tablet:max-w-lg
 tablet:rounded-2xl
-tablet:bottom-auto
-tablet:right-auto
-tablet:top-1/2
-tablet:left-1/2
-tablet:-translate-x-1/2
-tablet:-translate-y-1/2
+// tablet:bottom-auto
+// tablet:right-auto
+// tablet:top-1/2
+// tablet:left-1/2
+// tablet:-translate-x-1/2
+// tablet:-translate-y-1/2
 `;
 
 const StyledHeader = tw.header`
@@ -106,8 +110,7 @@ rounded
     display: flex;
     width: 100%;
     gap: 10px;
-
-    cursor: pointer;
+    )cursor: pointer;
     > input {
       background-color: green;
     }
@@ -227,7 +230,13 @@ const CreateOrEditModal = NiceModal.create(({ patientData }: Props) => {
             initial={{ opacity: 0 }}
             style={{ willChange }}
             transition={{ type: 'spring', duration: 0.8 }}>
-            <StyledWrapper ref={ref}>
+            <StyledWrapper
+              ref={ref}
+              animate={{ y: 0 }}
+              exit={{ y: '-100%' }}
+              initial={{ y: '-100%' }}
+              style={{ willChange }}
+              transition={{ type: 'spring', duration: 0.6 }}>
               <StyledHeader>
                 <StyledTitle>{titleLabel}</StyledTitle>
                 <button onClick={handleOnClose}>
