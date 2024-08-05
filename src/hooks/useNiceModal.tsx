@@ -30,7 +30,10 @@ const useNiceModal = (
     };
   }, [onRemove, open, isOpen, remove]);
 
-  const handleOnClose = () => hide();
+  const handleOnClose = () => {
+    hide();
+    document.body.style.overflow = 'auto';
+  };
 
   return { isOpen, handleOnClose };
 };

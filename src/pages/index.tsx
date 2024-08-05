@@ -20,7 +20,7 @@ desktop:grid-cols-3
 `;
 
 const StyledAddPatientButton = tw.button`
-absolute
+sticky
 bottom-4
 right-4
 flex
@@ -30,7 +30,7 @@ p-4
 rounded-full
 bg-greens-sage
 text-darks-black
-
+w-fit
 hover:bg-greens-viridian
 `;
 
@@ -46,7 +46,11 @@ export default function Home() {
           <Card key={item.id} createOrEditModalId={createOrEditModalId} patientData={item} />
         ))}
       </StyledWrapper>
-      <StyledAddPatientButton onClick={() => NiceModal.show(createOrEditModalId)}>
+      <StyledAddPatientButton
+        onClick={() => {
+          NiceModal.show(createOrEditModalId);
+          document.body.style.overflow = 'hidden';
+        }}>
         <UserPlusIcon className="h-6 w-6 text-darks-black" />
         Add New Patient
       </StyledAddPatientButton>
