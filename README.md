@@ -10,7 +10,6 @@ Welcome to the Patient Data Management application repository. This project is a
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
 4. [Usage](#usage)
-5. [Contact](#contact)
 
 ## About the Project
 
