@@ -205,7 +205,7 @@ const CreateOrEditModal = NiceModal.create(({ patientData }: Props) => {
 
     queryClient.setQueryData(queriesCache.queryKey, newPatientsData);
     handleOnClose();
-    toast.success('Patient created successfully', {
+    toast.success(`Patient ${isEditMode ? 'edited' : 'created'} successfully`, {
       style: {
         backgroundColor: 'rgba(42, 51, 60, 0.80)',
         color: '#fff',
