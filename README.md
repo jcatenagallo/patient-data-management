@@ -1,6 +1,6 @@
 # Patient Data Management Application
 
-Welcome to the Patient Data Management application repository. This project is a Next.js application that uses Axios for HTTP requests, React Query for data management, Tailwind CSS with Twin Macro for styling, and Framer Motion for animations. It is deployed on Vercel and here is the domain: https://patient-data-management-six.vercel.app/ 
+Welcome to the Patient Data Management application repository. Before you start reading, please note that you can see the Vercel deploy of this app here: https://patient-data-management-six.vercel.app/ 
 
 ## Table of Contents
 
