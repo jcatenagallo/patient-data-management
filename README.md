@@ -14,7 +14,7 @@ Welcome to the Patient Data Management application repository. Before you start 
 
 ## About the Project
 
-This project is a simple, user-friendly patient data management system, designed to streamline the process of managing patient data. It is built using modern development tools and libraries, ensuring an efficient, responsive, and smooth user experience. 
+This project is a mobile-first, user-friendly patient data management system, designed with a primary focus on optimizing the mobile user experience. The design and development process prioritized mobile interfaces, ensuring that the application is highly responsive and efficient on mobile devices. Built using modern development tools and libraries, this system streamlines the process of managing patient data, delivering a smooth, seamless user experience that is both functional and aesthetically pleasing on all devices.
 
 ## Built With
 
