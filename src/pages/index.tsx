@@ -3,10 +3,15 @@ import { UserPlusIcon } from '@heroicons/react/24/outline';
 import { useId } from 'react';
 import NiceModal from '@ebay/nice-modal-react';
 import Skeleton from 'react-loading-skeleton';
-
 import 'react-loading-skeleton/dist/skeleton.css';
+import { GetServerSideProps } from 'next';
+import { QueryClient, dehydrate } from '@tanstack/react-query';
+
 import Layout from '@/components/Layout';
-import useGetPatientsRecords from '@/hooks/api/useGetPatientsRecord';
+import useGetPatientsRecords, {
+  GET_PATIENTS_RECORDS,
+  getPatientsRecords,
+} from '@/hooks/api/useGetPatientsRecord';
 import Card from '@/components/Common/Card';
 import CreateOrEditModal from '@/components/Common/CreateOrEditModal';
 
@@ -69,3 +74,15 @@ export default function Home() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const queryClient = new QueryClient();
+
+  queryClient.prefetchQuery([GET_PATIENTS_RECORDS], () => getPatientsRecords());
+
+  return {
+    props: {
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+    },
+  };
+};
