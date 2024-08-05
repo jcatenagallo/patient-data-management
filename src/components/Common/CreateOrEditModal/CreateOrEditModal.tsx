@@ -24,7 +24,7 @@ import Avatar from '../Avatar';
 import TextArea from '../TextArea';
 
 const StyledLayer = tw(motion.div)`
-absolute
+fixed
 top-0
 left-0
 bottom-0
@@ -45,6 +45,7 @@ flex
 flex-col 
 p-6
 bg-white
+overflow-y-auto
 
 tablet:w-full
 tablet:max-w-lg

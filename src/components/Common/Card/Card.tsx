@@ -30,7 +30,10 @@ type Props = {
 
 const Card = ({ patientData, createOrEditModalId }: Props) => {
   const { description, name, avatar, website, createdAt } = patientData;
-  const handleOnOpenEditModal = () => NiceModal.show(createOrEditModalId, { patientData });
+  const handleOnOpenEditModal = () => {
+    document.body.style.overflow = 'hidden';
+    NiceModal.show(createOrEditModalId, { patientData });
+  };
 
   return (
     <StyledWrapper>
