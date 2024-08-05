@@ -20,9 +20,9 @@ desktop:grid-cols-3
 `;
 
 const StyledAddPatientButton = tw.button`
-sticky
+fixed
 bottom-4
-right-4
+right-6
 flex
 gap-2
 items-center
