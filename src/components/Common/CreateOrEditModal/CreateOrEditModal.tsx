@@ -193,17 +193,17 @@ const CreateOrEditModal = NiceModal.create(({ patientData }: Props) => {
     const queriesCache = queryClient.getQueryCache().findAll([GET_PATIENTS_RECORDS])[0];
     const queriesCacheData = queriesCache?.state.data as PatientRecord[];
 
-    let newQueueData;
+    let newPatientsData;
 
     if (isEditMode) {
-      newQueueData = queriesCacheData?.map((item) =>
+      newPatientsData = queriesCacheData?.map((item) =>
         item.id === newPatient.id ? newPatient : item,
       );
     } else {
-      newQueueData = queriesCacheData ? [newPatient, ...queriesCacheData] : [newPatient];
+      newPatientsData = queriesCacheData ? [newPatient, ...queriesCacheData] : [newPatient];
     }
 
-    queryClient.setQueryData(queriesCache.queryKey, newQueueData);
+    queryClient.setQueryData(queriesCache.queryKey, newPatientsData);
     handleOnClose();
   };
 
