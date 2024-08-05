@@ -37,7 +37,7 @@ rounded
     display: flex;
     width: 100%;
     gap: 10px;
-    )cursor: pointer;
+    cursor: pointer;
     > input {
       background-color: green;
     }
