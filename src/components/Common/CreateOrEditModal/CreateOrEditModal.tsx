@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useWillChange } from 'framer-motion';
 import tw, { styled } from 'twin.macro';
 import { useId, useMemo, useRef } from 'react';
 import { FormProvider, useForm, useWatch } from 'react-hook-form';
+import { useQueryClient } from '@tanstack/react-query';
 
 import useNiceModal from '@/hooks/useNiceModal';
 import useHandleClickOutside from '@/hooks/useHandleClickOutside';
@@ -16,6 +17,7 @@ import {
 } from '@/validationsSchemas/createOrEditPatientSchema';
 import { FORM_BASE_NAMES } from '@/types/enums';
 import { DefaultAvatar } from '@/assets/images';
+import { GET_PATIENTS_RECORDS } from '@/hooks/api/useGetPatientsRecord';
 
 import Input from '../Input';
 import Avatar from '../Avatar';
@@ -185,6 +187,34 @@ const CreateOrEditModal = NiceModal.create(({ patientData }: Props) => {
     cb: handleOnClose,
   });
 
+  const queryClient = useQueryClient();
+
+  const handleOptimisticUpdate = (newPatient: PatientRecord) => {
+    const queriesCache = queryClient.getQueryCache().findAll([GET_PATIENTS_RECORDS])[0];
+    const queriesCacheData = queriesCache?.state.data as PatientRecord[];
+
+    let newQueueData;
+
+    if (isEditMode) {
+      newQueueData = queriesCacheData?.map((item) =>
+        item.id === newPatient.id ? newPatient : item,
+      );
+    } else {
+      newQueueData = queriesCacheData ? [newPatient, ...queriesCacheData] : [newPatient];
+    }
+
+    queryClient.setQueryData(queriesCache.queryKey, newQueueData);
+    handleOnClose();
+  };
+
+  const handleCreatePatient = () => {
+    form.trigger().then((isValid) => {
+      if (isValid) {
+        handleOptimisticUpdate(formValues);
+      }
+    });
+  };
+
   return (
     <FormProvider {...form}>
       <AnimatePresence initial={true} mode="popLayout">
@@ -238,7 +268,7 @@ const CreateOrEditModal = NiceModal.create(({ patientData }: Props) => {
                 <StyledInputLabel>Description *</StyledInputLabel>
                 <TextArea name={`${formBaseName}.description`} placeholder="Description" />
               </StyledInputContainer>
-              <StyledAddPatientButton onClick={() => form.trigger()}>
+              <StyledAddPatientButton onClick={handleCreatePatient}>
                 {buttonLabel}
               </StyledAddPatientButton>
               <StyledFormWrapper />
