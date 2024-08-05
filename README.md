@@ -20,10 +20,6 @@ This project is a simple, user-friendly patient data management system, designed
 
 This project is built with a number of leading-edge technologies:
 
-## Built With
-
-This project is built with a number of leading-edge technologies:
-
 - [Next.js](https://nextjs.org/): A React framework that enables features like server-side rendering and generating static websites for React-based web applications.
 - [TypeScript](https://www.typescriptlang.org/): An open-source language that builds on JavaScript by adding static type definitions. Types provide a way to describe the shape of an object, providing better documentation, and allowing TypeScript to validate that your code is working correctly.
 - [Axios](https://axios-http.com/): A promise-based HTTP client for the browser and Node.js. It makes it easy to send asynchronous HTTP requests to REST endpoints and perform CRUD operations.
