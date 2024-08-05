@@ -9,6 +9,7 @@ export default function Document() {
         <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="120x120" />
         <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
         <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+        <link href="/favicon.ico" rel="icon" />
         <link href="/site.webmanifest" rel="manifest" />
         <meta content="#da532c" name="msapplication-TileColor" />
         <meta content="#ffffff" name="theme-color" />
